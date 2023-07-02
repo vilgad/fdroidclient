@@ -1,29 +1,9 @@
-/*
- * Copyright (C) 2010-12  Ciaran Gultnieks, ciaran@ciarang.com
- * Copyright (C) 2009  Roberto Jacinto, roberto.jacinto@caixamagica.pt
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License
- * as published by the Free Software Foundation; either version 3
- * of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
- */
+package org.fdroid.fdroid.views.main;
 
-package org.fdroid.fdroid.views.installed;
-
-import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,43 +21,44 @@ import org.fdroid.fdroid.R;
 import org.fdroid.fdroid.Utils;
 import org.fdroid.fdroid.data.App;
 import org.fdroid.fdroid.data.DBHelper;
+import org.fdroid.fdroid.views.installed.InstalledAppListAdapter;
 
 import java.util.List;
 
-public class InstalledAppsActivity extends AppCompatActivity {
-
+public class InstalledAppsViewBinder extends AppCompatActivity{
+    public static final String TAG = "CategoriesViewBinder";
     private FDroidDatabase db;
-    private InstalledAppListAdapter adapter;
+    private final AppCompatActivity activity;
+    private final InstalledAppListAdapter adapter;
     private RecyclerView appList;
     private TextView emptyState;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        Log.d("vilgad", "inside oncreate of InstalledAppsActivity");
-        FDroidApp fdroidApp = (FDroidApp) getApplication();
-        fdroidApp.setSecureWindow(this);
+    InstalledAppsViewBinder(final AppCompatActivity activity, FrameLayout parent) {
+        this.activity = activity;
 
-        fdroidApp.applyPureBlackBackgroundInDarkTheme(this);
+//        FDroidApp fdroidApp = (FDroidApp) activity.getApplication();
+//        fdroidApp.setSecureWindow(activity);
+//
+//        fdroidApp.applyPureBlackBackgroundInDarkTheme(activity);
 
-        super.onCreate(savedInstanceState);
+//        activity.setContentView(R.layout.installed_apps_layout);
+        View installedAppsView = activity.getLayoutInflater().inflate(R.layout.installed_apps_layout, parent, true);
 
-        setContentView(R.layout.installed_apps_layout);
+//        MaterialToolbar toolbar = activity.findViewById(R.id.toolbar);
+//        activity.setSupportActionBar(toolbar);
+//        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        MaterialToolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        adapter = new InstalledAppListAdapter(activity);
 
-        adapter = new InstalledAppListAdapter(this);
-
-        appList = findViewById(R.id.app_list);
+        appList = installedAppsView.findViewById(R.id.app_list);
         appList.setHasFixedSize(true);
-        appList.setLayoutManager(new LinearLayoutManager(this));
+        appList.setLayoutManager(new LinearLayoutManager(activity));
         appList.setAdapter(adapter);
 
-        emptyState = findViewById(R.id.empty_state);
+        emptyState = installedAppsView.findViewById(R.id.empty_state);
 
-        db = DBHelper.getDb(this);
-        db.getAppDao().getInstalledAppListItems(getPackageManager()).observe(this, this::onLoadFinished);
+        db = DBHelper.getDb(activity);
+        db.getAppDao().getInstalledAppListItems(activity.getPackageManager()).observe(activity, this::onLoadFinished);
     }
 
     private void onLoadFinished(List<AppListItem> items) {
@@ -94,7 +75,7 @@ public class InstalledAppsActivity extends AppCompatActivity {
         // load app prefs for each app off the UiThread and update item if updates are ignored
         AppPrefsDao appPrefsDao = db.getAppPrefsDao();
         for (AppListItem item : items) {
-            Utils.observeOnce(appPrefsDao.getAppPrefs(item.getPackageName()), this, appPrefs -> {
+            Utils.observeOnce(appPrefsDao.getAppPrefs(item.getPackageName()), activity, appPrefs -> {
                 if (appPrefs.getIgnoreVersionCodeUpdate() > 0) adapter.updateItem(item, appPrefs);
             });
         }
@@ -102,8 +83,8 @@ public class InstalledAppsActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.installed_apps, menu);
-        return super.onCreateOptionsMenu(menu);
+        activity.getMenuInflater().inflate(R.menu.installed_apps, menu);
+        return activity.onCreateOptionsMenu(menu);
     }
 
     @Override

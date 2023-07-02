@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_VIEW_UPDATES = "org.fdroid.fdroid.views.main.MainActivity.VIEW_UPDATES";
     private static final String EXTRA_VIEW_NEARBY = "org.fdroid.fdroid.views.main.MainActivity.VIEW_NEARBY";
     public static final String EXTRA_VIEW_SETTINGS = "org.fdroid.fdroid.views.main.MainActivity.VIEW_SETTINGS";
+    public static final String EXTRA_VIEW_INSTALLED_APPS = "org.fdroid.fdroid.views.main.MainActivity.VIEW_INSTALLED_APPS";
 
     static final int REQUEST_LOCATION_PERMISSIONS = 0xEF0F;
     static final int REQUEST_STORAGE_PERMISSIONS = 0xB004;

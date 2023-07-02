@@ -102,8 +102,11 @@ class MainViewAdapter extends RecyclerView.Adapter<MainViewController> {
                 // for broadcast events (which is what the data binding does).
                 break;
             case R.id.settings:
-                holder.bindSettingsView();
+//                holder.bindSettingsView();
+                holder.bindInstalledAppsView();
                 break;
+//            case R.id.my_apps:
+//                holder.bindInstalledAppsView();
             default:
                 throw new IllegalStateException("Unknown view type " + viewType);
         }

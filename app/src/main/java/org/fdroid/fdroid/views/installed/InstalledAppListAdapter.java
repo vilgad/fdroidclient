@@ -22,7 +22,7 @@ public class InstalledAppListAdapter extends RecyclerView.Adapter<InstalledAppLi
 
     private final List<App> items = new ArrayList<>();
 
-    protected InstalledAppListAdapter(AppCompatActivity activity) {
+    public InstalledAppListAdapter(AppCompatActivity activity) {
         this.activity = activity;
     }
 
@@ -64,7 +64,7 @@ public class InstalledAppListAdapter extends RecyclerView.Adapter<InstalledAppLi
     }
 
     @Nullable
-    App getItem(int position) {
+    public App getItem(int position) {
         return items.get(position);
     }
 }

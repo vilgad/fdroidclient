@@ -180,7 +180,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:text="@string/apps"
-            swap:icon="@drawable/ic_apps" />
+            swap:icon="@drawable/ic_app" />
 
     </LinearLayout>
 

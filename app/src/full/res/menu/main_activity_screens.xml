@@ -28,17 +28,23 @@
     <item
         android:id="@+id/updates"
         android:enabled="true"
-        android:visible="false"
-        android:icon="@drawable/ic_updates"
+        android:icon="@drawable/ic_update"
         android:orderInCategory="3"
         android:title="@string/main_menu__updates"
         app:showAsAction="ifRoom|withText" />
     <item
         android:id="@+id/settings"
         android:enabled="true"
-        android:visible="false"
         android:icon="@drawable/ic_settings"
         android:orderInCategory="4"
         android:title="@string/menu_settings"
         app:showAsAction="ifRoom|withText" />
+
+<!--    <item-->
+<!--        android:id="@+id/my_apps"-->
+<!--        android:enabled="true"-->
+<!--        android:icon="@drawable/ic_apps"-->
+<!--        android:orderInCategory="4"-->
+<!--        android:title="@string/menu_my_apps"-->
+<!--        app:showAsAction="ifRoom|withText" />-->
 </menu>

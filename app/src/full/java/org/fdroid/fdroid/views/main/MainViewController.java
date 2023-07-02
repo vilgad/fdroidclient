@@ -75,6 +75,10 @@ class MainViewController extends RecyclerView.ViewHolder {
         }
     }
 
+    public void bindInstalledAppsView() {
+        new InstalledAppsViewBinder(activity, frame);
+    }
+
     /**
      * Attaches a {@link PreferencesFragment} to the view. Everything else is managed by the
      * fragment itself, so no further work needs to be done by this view binder.
