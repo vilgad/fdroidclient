@@ -254,6 +254,7 @@ This often occurs with apps installed via Google Play or other sources, if they 
     <string name="menu_opencollective">OpenCollective</string>
     <!-- The bottom bar button label -->
     <string name="main_menu__latest_apps">Latest</string>
+    <string name="main_menu__feed">Feed</string>
     <!-- The bottom bar button label -->
     <string name="main_menu__categories">Categories</string>
     <!-- The bottom bar button label.  Should be the same term used in the Google Nearby Settings -->
