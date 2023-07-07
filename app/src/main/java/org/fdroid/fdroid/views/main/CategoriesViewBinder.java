@@ -81,7 +81,8 @@ class CategoriesViewBinder implements Observer<List<Category>> {
         ImageButton settings = categoriesView.findViewById(R.id.bt_settings);
         settings.setOnClickListener(
                 view -> {
-                    Toast.makeText(categoriesView.getContext(), "Settings button clicked", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(categoriesView.getContext(), "Settings button clicked", Toast.LENGTH_SHORT).show();
+                    activity.startActivity(new Intent(activity, SettingsView.class));
                 }
         );
 

@@ -132,17 +132,17 @@ public class AppListActivity extends AppCompatActivity implements CategoryTextWa
 
         sortImage = findViewById(R.id.sort);
         sortImage.setImageResource(
-                SortClause.WORDS.equals(sortClauseSelected) ? R.drawable.ic_sort : R.drawable.ic_last_updated
+                SortClause.WORDS.equals(sortClauseSelected) ? R.drawable.sort_by_svgrepo_com : R.drawable.history_svgrepo_com
         );
         sortImage.setOnClickListener(view -> {
             switch (sortClauseSelected) {
                 case SortClause.WORDS:
                     sortClauseSelected = SortClause.LAST_UPDATED;
-                    sortImage.setImageResource(R.drawable.ic_last_updated);
+                    sortImage.setImageResource(R.drawable.history_svgrepo_com);
                     break;
                 case SortClause.LAST_UPDATED:
                     sortClauseSelected = SortClause.WORDS;
-                    sortImage.setImageResource(R.drawable.ic_sort);
+                    sortImage.setImageResource(R.drawable.sort_by_svgrepo_com);
                     break;
                 default:
                     Log.e("AppListActivity", "Unknown sort clause: " + sortClauseSelected);
