@@ -15,6 +15,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <include
+                android:id="@+id/toolbar_category"
+                layout="@layout/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/banner_updating_repos" />
+
+
             <org.fdroid.fdroid.views.StatusBanner
                 android:id="@+id/banner_updating_repos"
                 android:layout_width="0dp"
@@ -22,6 +32,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
+
 
             <TextView
                 android:id="@+id/empty_state"
@@ -39,23 +50,22 @@
                 android:id="@+id/category_list"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                tools:listitem="@layout/category_item"
-                app:layout_constraintTop_toBottomOf="@+id/banner_updating_repos"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:scrollbars="vertical"
-                tools:layout_editor_absoluteX="0dp" />
-
-            <include
-                layout="@layout/fab_search"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginBottom="@dimen/fab_margin"
-                android:layout_marginEnd="@dimen/fab_margin"
-                android:layout_marginRight="@dimen/fab_margin" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar_category"
+                tools:listitem="@layout/category_item" />
+
+<!--            <include-->
+<!--                layout="@layout/fab_search"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                android:layout_marginBottom="@dimen/fab_margin"-->
+<!--                android:layout_marginEnd="@dimen/fab_margin"-->
+<!--                android:layout_marginRight="@dimen/fab_margin" />-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

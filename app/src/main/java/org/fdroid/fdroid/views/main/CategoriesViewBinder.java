@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.util.ArraySet;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.WorkerThread;
@@ -72,6 +75,16 @@ class CategoriesViewBinder implements Observer<List<Category>> {
         categoriesList.setLayoutManager(new LinearLayoutManager(activity));
         categoriesList.setAdapter(categoryAdapter);
 
+        View search = categoriesView.findViewById(R.id.search_card_view);
+        search.setOnClickListener(v -> activity.startActivity(new Intent(activity, AppListActivity.class)));
+
+        ImageButton settings = categoriesView.findViewById(R.id.bt_settings);
+        settings.setOnClickListener(
+                view -> {
+                    Toast.makeText(categoriesView.getContext(), "Settings button clicked", Toast.LENGTH_SHORT).show();
+                }
+        );
+
         final SwipeRefreshLayout swipeToRefresh =
                 categoriesView.findViewById(R.id.swipe_to_refresh);
         Utils.applySwipeLayoutColors(swipeToRefresh);
@@ -80,16 +93,16 @@ class CategoriesViewBinder implements Observer<List<Category>> {
             UpdateService.updateNow(activity);
         });
 
-        FloatingActionButton searchFab = categoriesView.findViewById(R.id.fab_search);
-        searchFab.setOnClickListener(v -> activity.startActivity(new Intent(activity, AppListActivity.class)));
-        searchFab.setOnLongClickListener(view -> {
-            if (Preferences.get().hideOnLongPressSearch()) {
-                HidingManager.showHideDialog(activity);
-                return true;
-            } else {
-                return false;
-            }
-        });
+//        FloatingActionButton searchFab = categoriesView.findViewById(R.id.fab_search);
+//        searchFab.setOnClickListener(v -> activity.startActivity(new Intent(activity, AppListActivity.class)));
+//        searchFab.setOnLongClickListener(view -> {
+//            if (Preferences.get().hideOnLongPressSearch()) {
+//                HidingManager.showHideDialog(activity);
+//                return true;
+//            } else {
+//                return false;
+//            }
+//        });
     }
 
     /**

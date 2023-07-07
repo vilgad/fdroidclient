@@ -19,6 +19,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
+            <include
+                android:id="@+id/toolbar_latest"
+                layout="@layout/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
             <TextView
                 android:id="@+id/empty_state"
                 android:layout_width="match_parent"
@@ -38,6 +44,6 @@
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-    <include layout="@layout/fab_search" />
+<!--    <include layout="@layout/fab_search" />-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

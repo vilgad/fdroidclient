@@ -3,9 +3,11 @@ package org.fdroid.fdroid.views.main;
 import android.content.Intent;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -89,16 +91,26 @@ class LatestViewBinder implements Observer<List<AppOverviewItem>>, ChangeListene
             UpdateService.updateNow(activity);
         });
 
-        FloatingActionButton searchFab = latestView.findViewById(R.id.fab_search);
-        searchFab.setOnClickListener(v -> activity.startActivity(new Intent(activity, AppListActivity.class)));
-        searchFab.setOnLongClickListener(view -> {
-            if (Preferences.get().hideOnLongPressSearch()) {
-                HidingManager.showHideDialog(activity);
-                return true;
-            } else {
-                return false;
-            }
-        });
+        View search = latestView.findViewById(R.id.search_card_view);
+        search.setOnClickListener(v -> activity.startActivity(new Intent(activity, AppListActivity.class)));
+
+        ImageButton settings = latestView.findViewById(R.id.bt_settings);
+        settings.setOnClickListener(
+                view -> {
+                    Toast.makeText(latestView.getContext(), "Settings button clicked", Toast.LENGTH_SHORT).show();
+                }
+        );
+
+//        FloatingActionButton searchFab = latestView.findViewById(R.id.fab_search);
+//        searchFab.setOnClickListener(v -> activity.startActivity(new Intent(activity, AppListActivity.class)));
+//        searchFab.setOnLongClickListener(view -> {
+//            if (Preferences.get().hideOnLongPressSearch()) {
+//                HidingManager.showHideDialog(activity);
+//                return true;
+//            } else {
+//                return false;
+//            }
+//        });
     }
 
     @Override
