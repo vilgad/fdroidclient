@@ -538,7 +538,7 @@ public final class Utils {
      */
     public static CharSequence formatAppNameAndSummary(String appName, @Nullable String summary) {
         String toFormat = appName;
-        if (summary != null) toFormat += ' ' + summary;
+        if (summary != null) toFormat += '\n' + summary;
         CharacterStyle normal = new TypefaceSpan("sans-serif");
         CharacterStyle light = new TypefaceSpan("sans-serif-light");
 

@@ -50,7 +50,6 @@ class LatestViewBinder implements Observer<List<AppOverviewItem>>, ChangeListene
     private final TextView emptyState;
     private final RecyclerView appList;
     private final FDroidDatabase db;
-
     private ProgressBar progressBar;
 
     LatestViewBinder(final AppCompatActivity activity, FrameLayout parent) {
@@ -100,17 +99,6 @@ class LatestViewBinder implements Observer<List<AppOverviewItem>>, ChangeListene
                     Toast.makeText(latestView.getContext(), "Settings button clicked", Toast.LENGTH_SHORT).show();
                 }
         );
-
-//        FloatingActionButton searchFab = latestView.findViewById(R.id.fab_search);
-//        searchFab.setOnClickListener(v -> activity.startActivity(new Intent(activity, AppListActivity.class)));
-//        searchFab.setOnLongClickListener(view -> {
-//            if (Preferences.get().hideOnLongPressSearch()) {
-//                HidingManager.showHideDialog(activity);
-//                return true;
-//            } else {
-//                return false;
-//            }
-//        });
     }
 
     @Override
