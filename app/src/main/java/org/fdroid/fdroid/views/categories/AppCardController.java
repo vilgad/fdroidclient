@@ -84,6 +84,22 @@ public class AppCardController extends RecyclerView.ViewHolder
         Utils.setIconFromRepoOrPM(app, icon, icon.getContext());
     }
 
+    public void bindApp1(@NonNull AppOverviewItem app) {
+        currentApp = app;
+
+        String name = app.getName();
+        summary.setText(Utils.formatAppName(name == null ? "" : name, app.getSummary()));
+
+        if (newTag != null) {
+            if (isConsideredNew(app)) {
+                newTag.setVisibility(View.VISIBLE);
+            } else {
+                newTag.setVisibility(View.GONE);
+            }
+        }
+        Utils.setIconFromRepoOrPM(app, icon, icon.getContext());
+    }
+
     private boolean isConsideredNew(@NonNull AppOverviewItem app) {
         if (app.getAdded() != app.getLastUpdated()) {
             return false;

@@ -30,7 +30,7 @@ class AppPreviewAdapter extends RecyclerView.Adapter<AppCardController> {
 
     @Override
     public void onBindViewHolder(@NonNull AppCardController holder, int position) {
-        holder.bindApp(items.get(position));
+        holder.bindApp1(items.get(position));
     }
 
     @Override

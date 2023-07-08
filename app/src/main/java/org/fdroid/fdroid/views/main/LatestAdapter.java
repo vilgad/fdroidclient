@@ -98,6 +98,7 @@ public class LatestAdapter extends RecyclerView.Adapter<AppCardController> {
     @Override
     public void onBindViewHolder(@NonNull AppCardController holder, int position) {
         final AppOverviewItem app = apps.get(position);
+
         holder.bindApp(app);
     }
 

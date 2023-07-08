@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.ColorInt;
@@ -41,9 +42,9 @@ public class CategoryController extends RecyclerView.ViewHolder {
 
     private static final String TAG = "CategoryController";
 
-    private final Button viewAll;
+    private final ImageButton viewAll;
     private final TextView heading;
-    private final FeatureImage image;
+//    private final FeatureImage image;
     private final AppPreviewAdapter appCardsAdapter;
     private final FrameLayout background;
 
@@ -63,7 +64,7 @@ public class CategoryController extends RecyclerView.ViewHolder {
         viewAll.setOnClickListener(onViewAll);
 
         heading = itemView.findViewById(R.id.name);
-        image = itemView.findViewById(R.id.category_image);
+//        image = itemView.findViewById(R.id.category_image);
         background = itemView.findViewById(R.id.category_background);
 
         RecyclerView appCards = itemView.findViewById(R.id.app_cards);
@@ -85,33 +86,33 @@ public class CategoryController extends RecyclerView.ViewHolder {
         heading.setText(categoryName);
         heading.setContentDescription(activity.getString(R.string.tts_category_name, categoryName));
 
-        @ColorInt int backgroundColour = getBackgroundColour(activity, item.category.getId());
-        background.setBackgroundColor(backgroundColour);
+//        @ColorInt int backgroundColour = getBackgroundColour(activity, item.category.getId());
+//        background.setBackgroundColor(backgroundColour);
 
         // try to load image from repo first
         FileV2 iconFile = item.category.getIcon(LocaleListCompat.getDefault());
         Repository repo = FDroidApp.getRepoManager(activity).getRepository(item.category.getRepoId());
-        if (iconFile != null && repo != null) {
-            Log.i(TAG, "Loading remote image for: " + item.category.getId());
-            Glide.with(activity)
-                    .load(Utils.getDownloadRequest(repo, iconFile))
-                    .apply(Utils.getAlwaysShowIconRequestOptions())
-                    .into(image);
-        } else {
+//        if (iconFile != null && repo != null) {
+//            Log.i(TAG, "Loading remote image for: " + item.category.getId());
+//            Glide.with(activity)
+//                    .load(Utils.getDownloadRequest(repo, iconFile))
+//                    .apply(Utils.getAlwaysShowIconRequestOptions());
+////                    .into(image);
+//        } else {
             // try to get local image resource
-            int categoryImageId = getCategoryResource(activity, item.category.getId(), "drawable", true);
-            if (categoryImageId == 0) {
-                Log.w(TAG, "No image for: " + item.category.getId());
-                image.setColour(backgroundColour);
-                image.setImageDrawable(null);
-                Glide.with(activity).clear(image);
-            } else {
-                image.setColour(ContextCompat.getColor(activity, R.color.fdroid_blue));
-                Glide.with(activity).load(categoryImageId).into(image);
-            }
-        }
+//            int categoryImageId = getCategoryResource(activity, item.category.getId(), "drawable", true);
+//            if (categoryImageId == 0) {
+//                Log.w(TAG, "No image for: " + item.category.getId());
+//                image.setColour(backgroundColour);
+//                image.setImageDrawable(null);
+//                Glide.with(activity).clear(image);
+//            } else {
+//                image.setColour(ContextCompat.getColor(activity, R.color.fdroid_blue));
+//                Glide.with(activity).load(categoryImageId).into(image);
+//            }
+//        }
         Resources r = activity.getResources();
-        viewAll.setText(r.getQuantityString(R.plurals.button_view_all_apps_in_category, item.numApps, item.numApps));
+//        viewAll.setText(r.getQuantityString(R.plurals.button_view_all_apps_in_category, item.numApps, item.numApps));
         viewAll.setContentDescription(r.getQuantityString(R.plurals.tts_view_all_in_category, item.numApps,
                 item.numApps, currentCategory));
     }

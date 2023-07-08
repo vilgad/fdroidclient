@@ -19,20 +19,23 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:textColor="?attr/categoryName"
         android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/view_all_button"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteX="0dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/view_all_button"
+        app:layout_constraintStart_toStartOf="@+id/category_background"
+        app:layout_constraintTop_toTopOf="@+id/view_all_button"
         tools:text="Business" />
 
-    <Button
+    <ImageButton
         android:id="@+id/view_all_button"
-        style="@style/Widget.App.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:layout_marginHorizontal="10dp"
+        android:background="@color/white"
+        android:padding="5dp"
+        android:src="@drawable/ic_arrow_right"
         android:textAllCaps="true"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/category_background"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="268dp"
         tools:text="View all 10" />
 
     <FrameLayout
@@ -42,22 +45,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/app_cards"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/app_cards"
-        tools:background="#ffffbbbb" />
-
-    <org.fdroid.fdroid.views.apps.FeatureImage
-        android:id="@+id/category_image"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:importantForAccessibility="no"
-        android:scaleType="fitStart"
-        app:layout_constraintBottom_toBottomOf="@+id/category_background"
-        app:layout_constraintEnd_toEndOf="@+id/category_background"
-        app:layout_constraintStart_toStartOf="@+id/category_background"
-        app:layout_constraintTop_toTopOf="@+id/category_background"
-        tools:ignore="ContentDescription"
-        tools:src="@drawable/category_graphics"
-        tools:targetApi="jelly_bean" />
+        app:layout_constraintTop_toTopOf="@+id/app_cards" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/app_cards"
@@ -65,8 +53,7 @@
         android:layout_height="wrap_content"
         android:clipToPadding="false"
         android:orientation="horizontal"
-        android:paddingTop="@dimen/category_preview__app_list__padding__vertical"
-        android:paddingBottom="@dimen/category_preview__app_list__padding__vertical"
+        android:layout_marginTop="5dp"
         app:layoutManager="LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

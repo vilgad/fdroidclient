@@ -549,6 +549,16 @@ public final class Utils {
         return sb;
     }
 
+    public static CharSequence formatAppName(String appName, @Nullable String summary) {
+        String toFormat = appName;
+        CharacterStyle normal = new TypefaceSpan("sans-serif");
+
+        SpannableStringBuilder sb = new SpannableStringBuilder(toFormat);
+        sb.setSpan(normal, 0, appName.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        return sb;
+    }
+
     /**
      * This is not strict validation of the package name, this is just to make
      * sure that the package name is not used as an attack vector, e.g. SQL
