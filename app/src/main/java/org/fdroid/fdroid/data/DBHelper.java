@@ -72,16 +72,27 @@ public class DBHelper {
     static void prePopulateDb(Context context, FDroidDatabase db) {
         List<String> initialRepos = DBHelper.loadInitialRepos(context);
         int weight = 1;
+        boolean hasEnabledRepo = false;
         for (int i = 0; i < initialRepos.size(); i += REPO_XML_ITEM_COUNT) {
+            boolean enabled = initialRepos.get(i + 4).equals("1");
+            // split addresses into a list
+            List<String> addresses = new ArrayList<>();
+            for (String address : initialRepos.get(i + 1).split("\\s+")) {
+                if (!address.isEmpty()) {
+                    addresses.add(address);
+                }
+            }
             InitialRepository repo = new InitialRepository(
                     initialRepos.get(i), // name
-                    initialRepos.get(i + 1), // address
+                    addresses.get(0), // primary address (by convention: the first item)
+                    addresses.subList(1, addresses.size()), // list of mirrors
                     initialRepos.get(i + 2), // description
                     initialRepos.get(i + 6),  // certificate
                     Integer.parseInt(initialRepos.get(i + 3)), // version
-                    initialRepos.get(i + 4).equals("1"), // enabled
+                    enabled, // enabled
                     weight++ // weight
             );
+            hasEnabledRepo = hasEnabledRepo || enabled;
             db.getRepositoryDao().insert(repo);
         }
         // Migrate repos from old content providers to new Room-based DB.
@@ -93,6 +104,9 @@ public class DBHelper {
             migrator.removeOldDb(context);
             // force update on UiThread in case we need to show Toasts
             new Handler(Looper.getMainLooper()).post(() -> UpdateService.forceUpdateRepo(context));
+        } else if (hasEnabledRepo) {
+            // update repos on the UiThread after pre-populating them
+            new Handler(Looper.getMainLooper()).post(() -> UpdateService.updateNow(context));
         }
     }
 
@@ -232,5 +246,4 @@ public class DBHelper {
                 + repoItems.size() + " % " + (REPO_XML_ITEM_COUNT - 1) + " != 0");
         return new LinkedList<>();
     }
-
 }

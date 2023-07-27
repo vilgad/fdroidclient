@@ -174,5 +174,4 @@ class CategoriesViewBinder implements Observer<List<Category>> {
         });
         return items;
     }
-
 }
