@@ -40,25 +40,39 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="8dp"
         android:ellipsize="end"
-        android:lines="2"
-        android:textColor="?attr/appListItem"
+        android:textColor="#000"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/icon_card_view"
         app:layout_constraintTop_toTopOf="@+id/icon_card_view"
-        tools:text="F-Droid Application manager with a long name that will wrap and then ellipsize" />
+        tools:text="F-Droid Application " />
 
     <TextView
-        android:id="@+id/status"
-        style="@style/AppListItemStatusText"
-        android:layout_width="wrap_content"
+        android:id="@+id/app_summary"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toEndOf="@+id/icon_card_view"
-        app:layout_constraintStart_toStartOf="@+id/app_name"
-        app:layout_constraintTop_toBottomOf="@+id/app_name"
-        tools:text="Installed" />
+        android:ellipsize="end"
+        android:lines="2"
+        android:layout_marginTop="2dp"
+        android:textColor="?attr/appListItem"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="@id/app_name"
+        app:layout_constraintTop_toBottomOf="@id/app_name"
+        app:layout_constraintEnd_toEndOf="@id/app_name"
+        tools:text="F-Droid Application manager with a long name that will wrap and then ellipsize" />
+
+<!--    We can add play Store like feature means if the apps are installed then show installed otherwise show  organization name-->
+<!--    <TextView-->
+<!--        android:id="@+id/status"-->
+<!--        style="@style/AppListItemStatusText"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textSize="12sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/icon_card_view"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/app_summary"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/app_summary"-->
+<!--        tools:text="Installed" />-->
 
 <!--    <FrameLayout-->
 <!--        android:id="@+id/buttons"-->

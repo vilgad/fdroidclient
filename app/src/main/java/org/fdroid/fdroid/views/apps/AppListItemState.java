@@ -71,7 +71,17 @@ public class AppListItemState {
         }
         return mainText != null
                 ? mainText
-                : Utils.formatAppNameAndSummary(app.name, app.summary);
+                : Utils.formatAppName(app.name, app.summary);
+    }
+
+    @Nullable
+    public CharSequence getSummaryText() {
+        if (showCheckBox) {
+            return app.summary;
+        }
+        return mainText != null
+                ? mainText
+                : app.summary;
     }
 
     public boolean shouldShowInstall() {

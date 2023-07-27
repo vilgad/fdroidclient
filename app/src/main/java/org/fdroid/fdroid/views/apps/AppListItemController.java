@@ -84,6 +84,8 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
     @NonNull
     private final TextView name;
 
+    private final TextView summary;
+
     @Nullable
     private final ImageView installButton;
 
@@ -152,6 +154,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
 
         icon = itemView.findViewById(R.id.icon);
         name = itemView.findViewById(R.id.app_name);
+        summary = itemView.findViewById(R.id.app_summary);
         status = itemView.findViewById(R.id.status);
         secondaryStatus = itemView.findViewById(R.id.secondary_status);
         progressBar = itemView.findViewById(R.id.progress_bar);
@@ -263,6 +266,7 @@ public abstract class AppListItemController extends RecyclerView.ViewHolder {
         AppListItemState viewState = getCurrentViewState(app, appStatus);
 
         name.setText(viewState.getMainText());
+        summary.setText(viewState.getSummaryText());
 
         if (actionButton != null) {
             if (viewState.shouldShowActionButton()) {
