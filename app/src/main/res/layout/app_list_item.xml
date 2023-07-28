@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clickable="true"
-    android:paddingVertical="10dp"
-    android:paddingHorizontal="15dp"
+    android:paddingVertical="8dp"
+    android:paddingHorizontal="16dp"
     android:background="?attr/selectableItemBackground"
     android:focusable="true">
 
@@ -40,6 +40,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="8dp"
         android:ellipsize="end"
+        android:fontFamily="sans-serif"
         android:textColor="#000"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,7 +54,8 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:lines="2"
-        android:layout_marginTop="2dp"
+        android:fontFamily="sans-serif-light"
+        android:layout_marginTop="1dp"
         android:textColor="?attr/appListItem"
         android:textSize="13sp"
         app:layout_constraintStart_toStartOf="@id/app_name"

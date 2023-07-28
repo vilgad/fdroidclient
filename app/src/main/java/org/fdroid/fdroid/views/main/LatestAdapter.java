@@ -45,10 +45,8 @@ public class LatestAdapter extends RecyclerView.Adapter<AppCardController> {
         int layout;
         switch (viewType) {
             case R.id.latest_large_tile:
-                layout = R.layout.app_card_large;
-                break;
             case R.id.latest_small_tile:
-                layout = R.layout.app_card_horizontal;
+                layout = R.layout.app_card_large;
                 break;
             case R.id.latest_regular_list:
                 layout = R.layout.app_card_list_item;
