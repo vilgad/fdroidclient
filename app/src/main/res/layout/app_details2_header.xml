@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="2dp"
     android:layout_margin="@dimen/details_activity_padding"
     android:animateLayoutChanges="true">
 
@@ -11,8 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp">
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -29,16 +31,25 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="12dp">
 
-                <ImageView
-                    android:id="@+id/icon"
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/icon_card_view"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
+                    app:cardElevation="2dp"
+                    app:cardCornerRadius="8dp"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginEnd="8dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_repo_app_default"
-                    android:transitionName="@string/transition_app_item_icon" />
+                    android:layout_margin="3dp"
+                    android:transitionName="@string/transition_app_item_icon">
+
+                    <ImageView
+                        android:id="@+id/icon"
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
+                        android:layout_marginEnd="8dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_repo_app_default" />
+                </androidx.cardview.widget.CardView>
 
                 <!-- Name, Author (optional), Updated date -->
                 <LinearLayout
@@ -46,8 +57,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginTop="8dp"
-                    android:layout_toEndOf="@id/icon"
+                    android:paddingHorizontal="10dp"
+                    android:layout_toEndOf="@id/icon_card_view"
                     android:orientation="vertical">
 
                     <TextView
@@ -138,6 +149,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
+                    android:textAllCaps="false"
                     android:ellipsize="marquee"
                     android:visibility="invisible"
                     tools:visibility="visible"
@@ -151,6 +163,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_weight="0"
                     android:ellipsize="marquee"
+                    android:textAllCaps="false"
                     android:visibility="gone"
                     tools:visibility="visible"
                     tools:text="Open" />
@@ -175,11 +188,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:paddingStart="8dp"
-            android:paddingLeft="8dp"
-            android:paddingEnd="8dp"
-            android:paddingRight="8dp"
-            android:padding="8dp"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="15dp"
             android:scrollbars="none"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textIsSelectable="true"
@@ -194,12 +204,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/detailPanel"
-            android:paddingStart="8dp"
-            android:paddingLeft="8dp"
-            android:paddingTop="16dp"
-            android:paddingEnd="8dp"
-            android:paddingRight="8dp"
-            android:paddingBottom="16dp"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="10dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:visibility="gone"
             tools:visibility="visible"
