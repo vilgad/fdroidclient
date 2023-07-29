@@ -88,7 +88,7 @@ public class AppCardController extends RecyclerView.ViewHolder
         currentApp = app;
 
         String name = app.getName();
-        summary.setText(Utils.formatAppName(name == null ? "" : name, app.getSummary()));
+        summary.setText(Utils.formatAppName(name == null ? "" : name));
 
         if (newTag != null) {
             if (isConsideredNew(app)) {

@@ -4,71 +4,87 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="4dp"
-    android:paddingTop="8dp"
-    android:paddingBottom="8dp"
+    android:paddingHorizontal="16dp"
     android:clickable="true"
     android:background="?attr/selectableItemBackground"
     android:focusable="true">
 
     <!-- Ignore ContentDescription because it is kind of meaningless to have TTS read out "App icon"
          when it will inevitably read out the name of the app straight after. -->
-    <ImageView
-        android:id="@+id/icon"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/icon_card_view"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        tools:src="@drawable/ic_launcher"
-        android:scaleType="fitCenter"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        tools:ignore="ContentDescription" />
+        app:cardElevation="2dp"
+        app:cardCornerRadius="8dp"
+        android:layout_margin="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            android:transitionName="@string/transition_app_item_icon"
+            tools:ignore="ContentDescription"
+            tools:src="@drawable/ic_launcher" />
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/app_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:text="F-Droid Application manager with a long name that will wrap and then ellipsize"
-        android:textSize="18sp"
-        android:textColor="?attr/installedApps"
-        android:maxLines="2"
-        android:ellipsize="end"
-        app:layout_constraintStart_toEndOf="@+id/icon"
-        app:layout_constraintTop_toTopOf="@+id/icon"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp" />
+        android:ellipsize="end"
+        android:fontFamily="sans-serif"
+        android:textColor="#000"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/icon_card_view"
+        app:layout_constraintTop_toTopOf="@+id/icon_card_view"
+        tools:text="F-Droid Application " />
+
+    <TextView
+        android:id="@+id/app_summary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:lines="2"
+        android:fontFamily="sans-serif-light"
+        android:layout_marginTop="1dp"
+        android:textColor="?attr/appListItem"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="@id/app_name"
+        app:layout_constraintTop_toBottomOf="@id/app_name"
+        app:layout_constraintEnd_toEndOf="@id/app_name"
+        tools:text="F-Droid Application manager with a long name that will wrap and then ellipsize" />
 
     <TextView
         android:id="@+id/status"
+        style="@style/AppListItemStatusText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        tools:text="Version 4.7.3 (recommended)"
         android:textColor="?attr/installedApps"
-        style="@style/AppListItemStatusText"
-        app:layout_constraintTop_toBottomOf="@+id/app_name"
-        app:layout_constraintStart_toEndOf="@+id/icon"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp" />
+
+        android:layout_marginTop="1dp"
+        app:layout_constraintStart_toStartOf="@+id/app_summary"
+        app:layout_constraintTop_toBottomOf="@+id/app_summary"
+        tools:text="Version 4.7.3 (recommended)" />
 
     <TextView
         android:id="@+id/secondary_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        tools:text="Updates ignored"
-        android:textSize="14sp"
-        android:maxLines="1"
         android:ellipsize="end"
-        app:layout_constraintTop_toBottomOf="@+id/status"
-        app:layout_constraintStart_toEndOf="@+id/icon"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp" />
+        android:maxLines="1"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="@+id/status"
+        app:layout_constraintEnd_toEndOf="@+id/app_summary"
+        app:layout_constraintTop_toTopOf="@+id/status"
+        tools:text="Updates ignored" />
 
     <CheckBox
         android:id="@+id/checkbox"
@@ -76,7 +92,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/icon"
+        app:layout_constraintTop_toTopOf="@+id/icon_card_view"
         android:clickable="false"
         android:visibility="gone" />
 

@@ -99,7 +99,7 @@
          whether it is incompatible, what version is installed, etc -->
     <style name="AppListItemStatusText">
         <item name="android:textStyle">italic</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">13sp</item>
         <item name="android:textColor">?attr/lightGrayTextColor</item>
         <item name="android:maxLines">1</item>
         <item name="android:ellipsize">end</item>

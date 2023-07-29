@@ -553,7 +553,7 @@ public final class Utils {
         return sb;
     }
 
-    public static CharSequence formatAppName(String appName, @Nullable String summary) {
+    public static CharSequence formatAppName(String appName) {
         String toFormat = appName;
         CharacterStyle normal = new TypefaceSpan("sans-serif");
 
