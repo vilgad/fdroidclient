@@ -63,9 +63,9 @@ public class InstalledAppsActivity extends AppCompatActivity {
 
         setContentView(R.layout.installed_apps_layout);
 
-        MaterialToolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        MaterialToolbar toolbar = findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         adapter = new InstalledAppListAdapter(this);
 
