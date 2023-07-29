@@ -32,7 +32,6 @@ public class CategorySpan extends ReplacementSpan {
     private static final int TEXT_TRAILING_PADDING = 12;
     private static final int TEXT_BELOW_PADDING = 4;
     private static final int WHITE_SPACE_PADDING_AT_END = 4;
-    private static final float DROP_SHADOW_HEIGHT = 1.5f;
 
     private final Context context;
 
@@ -102,13 +101,13 @@ public class CategorySpan extends ReplacementSpan {
         int backgroundColour = CategoryController.getBackgroundColour(context, categoryName.toString());
 
         // The shadow below the entire category chip.
-        canvas.save();
-        canvas.translate(0, DROP_SHADOW_HEIGHT * density);
-        Paint shadowPaint = new Paint();
-        shadowPaint.setColor(0x66000000);
-        shadowPaint.setAntiAlias(true);
-        canvas.drawRoundRect(backgroundRect, cornerRadius, cornerRadius, shadowPaint);
-        canvas.restore();
+//        canvas.save();
+//        canvas.translate(0, DROP_SHADOW_HEIGHT * density);
+//        Paint shadowPaint = new Paint();
+//        shadowPaint.setColor(0x66000000);
+//        shadowPaint.setAntiAlias(true);
+//        canvas.drawRoundRect(backgroundRect, cornerRadius, cornerRadius, shadowPaint);
+//        canvas.restore();
 
         // The background which goes behind the text.
         Paint backgroundPaint = new Paint();
@@ -117,11 +116,11 @@ public class CategorySpan extends ReplacementSpan {
         canvas.drawRoundRect(backgroundRect, cornerRadius, cornerRadius, backgroundPaint);
 
         // The background behind the category icon.
-        Paint iconBackgroundPaint = new Paint();
-        iconBackgroundPaint.setColor(0xffd8d8d8);
-        iconBackgroundPaint.setAntiAlias(true);
-        RectF iconBackgroundRect = new RectF(0, 0, iconBackgroundSize, height);
-        canvas.drawRoundRect(iconBackgroundRect, cornerRadius, cornerRadius, iconBackgroundPaint);
+//        Paint iconBackgroundPaint = new Paint();
+//        iconBackgroundPaint.setColor(0xffd8d8d8);
+//        iconBackgroundPaint.setAntiAlias(true);
+//        RectF iconBackgroundRect = new RectF(0, 0, iconBackgroundSize, height);
+//        canvas.drawRoundRect(iconBackgroundRect, cornerRadius, cornerRadius, iconBackgroundPaint);
 
         // Category icon on top of the circular background which was just drawn.
         Drawable icon = ContextCompat.getDrawable(context, R.drawable.ic_categories);
